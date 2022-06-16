@@ -1,1 +1,37 @@
+You'll need to get git 
+After download it 
+You need to create the repository a the folder without any spaces oh the path by the next commands:
 
+mkdir git-localconfig-repo
+cd git-localconfig-repo
+git init
+dir
+
+uncompress the file git-localconfig-repo.zip file and copy the file limits-service.properties to your new folder that you created
+after that introduce this commands:
+
+git add *
+git commit -m "adding limits-service.properties"
+
+Once you do that, continue to copy the rest of the files you uncomressed on your new foler
+
+After modify your file "application.properties" that you uncompressed from your spring-cloud-config-server.zip 
+and change it accordingly to your path as:
+
+spring.application.name=spring-cloud-config-server
+server.port=8888
+spring.cloud.config.server.git.uri=file:///C:/Users/home/Desktop/yourProject/git-repo
+
+Run your application and visit: 
+
+http://localhost:8888/limits-service/default
+
+where you'll find your default configuration
+
+try new configurations as:
+http://localhost:8888/limits-service/dev
+http://localhost:8888/limits-service/aq
+
+After doing that go to your application "limits-service" and run them at the same time
+Now you'll see the new configurations from your preference editing the lines marked on the explanation file 
+selecting the diferent profiles
