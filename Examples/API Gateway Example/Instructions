@@ -1,1 +1,60 @@
+The dependencies that you need to add to this project are:
+
+Spring Boot DevTools
+Spring Boot Actuator
+Eureka Discovery Client
+Gateway
+
+Gateway: Provides a simple, yet effective way to route to APIs and provide cross cutting concerns to them such  as security, monitoring/metrics and resiliency
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+application.properties explanation:
+
+spring.application.name=api-gateway
+
+//Usually the port used by gateway is 8765
+server.port=8765
+
+//This register the service an Eureka client on the proper port
+eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka
+
+//If we uncomment the below line we should be able to watch our other services running at the URLS "Initial" from below
+#spring.cloud.gateway.discovery.locator.enabled=true
+
+//This line if we uncomment it is used to our URL to can be able to be written in lower case without give us an error and still working fine
+#spring.cloud.gateway.discovery.locator.lowerCaseServiceId=true
+
+spring.sleuth.sampler.probability=1.0
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//This are some URLS to use when we use our application to see how it works
+
+Some of these URLs may be complex to write by hand:
+Refer back to here if you have problems in the next steps.
+
+Initial
+
+- http://localhost:8765/CURRENCY-EXCHANGE/currency-exchange/from/USD/to/INR
+
+- http://localhost:8765/CURRENCY-CONVERSION/currency-conversion/from/USD/to/INR/quantity/10
+
+- http://localhost:8765/CURRENCY-CONVERSION/currency-conversion-feign/from/USD/to/INR/quantity/10
+
+Lower Case
+
+- http://localhost:8765/currency-exchange/currency-exchange/from/USD/to/INR
+
+- http://localhost:8765/currency-conversion/currency-conversion/from/USD/to/INR/quantity/10
+
+- http://localhost:8765/currency-conversion/currency-conversion-feign/from/USD/to/INR/quantity/10
+
+Custom Routes
+
+- http://localhost:8765/currency-exchange/from/USD/to/INR
+
+- http://localhost:8765/currency-conversion/from/USD/to/INR/quantity/10
+
+- http://localhost:8765/currency-conversion-feign/from/USD/to/INR/quantity/10
+
+- http://localhost:8765/currency-conversion-new/from/USD/to/INR/quantity/10
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
