@@ -1,1 +1,45 @@
+//We need to set how spring cloud data needs to connect to Spring Cloud Config Server
 
+//Name of our application
+spring.application.name=limits-service
+
+//We import the configuration from this which is "configserver" and the URL, usually set to access on port 8888
+spring.config.import=optional:configserver:http://localhost:8888
+
+//This lines below works when you have a git repository to select the profile you want to work with provided by the server
+//This has more priority cause it comes from the server, so the application will take the values from that file from our repository
+//And not directly from here.
+
+#spring.profiles.active=qa
+#spring.cloud.config.profile=qa
+
+
+//We stablish the minimum value we want to give us our application as is
+limits-service.minimum=3
+limits-service.maximum=997
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+If we want to change the output of our limits without getting our configuration values we previously set, we need to change our class
+"Limits controller.java" as:
+
+package com.in28minutes.microservices.limitsservice.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.in28minutes.microservices.limitsservice.bean.Limits;
+import com.in28minutes.microservices.limitsservice.configuration.Configuration;
+
+@RestController
+public class LimitsController {
+
+	@Autowired
+	private Configuration configuration;
+
+	@GetMapping("/limits")
+	public Limits retrieveLimits() {
+//		return new Limits(configuration.getMinimum(), 
+//				configuration.getMaximum());
+		return new Limits(1,1000);
+	}
+}
