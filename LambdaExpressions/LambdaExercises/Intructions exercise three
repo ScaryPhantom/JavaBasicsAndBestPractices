@@ -1,0 +1,5 @@
+Write a lambda expression that maps to the java.util.Supplier interface. This lambda should return the string "I love Java!"
+Assign it to a variable called ILoveJava.
+
+Use this supplier to assign the string "I love Java!" to a variable called supplierResult. 
+Then print the variable to the console.
