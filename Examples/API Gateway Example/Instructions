@@ -6,6 +6,16 @@ Eureka Discovery Client
 Gateway
 
 Gateway: Provides a simple, yet effective way to route to APIs and provide cross cutting concerns to them such  as security, monitoring/metrics and resiliency
+
+This project works with the EurekaExercise, and the order to execute the programs are the next one:
+
+name-server
+api-gateway
+currency-exchange-conversion
+currency-conversion-service
+
+And if you watch your Eureka server you'll see your running services
+
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 application.properties explanation:
 
@@ -47,7 +57,7 @@ Lower Case
 
 - http://localhost:8765/currency-conversion/currency-conversion-feign/from/USD/to/INR/quantity/10
 
-Custom Routes
+Custom Routes (You can see how this has been customized at: "ApiGatewayConfiguration.java")
 
 - http://localhost:8765/currency-exchange/from/USD/to/INR
 
