@@ -3,5 +3,6 @@ Genera un servicio de Eureka que pueda descubrir y administrar los microservicio
 user-service
 bike-service
 user-service
+config-service
 
-Estos se encuentran en la carpeta actual como .zip
+Estos se encuentran en la carpeta actual como .zip y de acuerdo con las configuraciones de "config-data.zip"
