@@ -1,0 +1,6 @@
+Make the BankAccount class Threadsafe using the synchronized keyword
+
+From exerciseOne I hope you can see that there's going to be thread interference when two 
+threads are accessing the same BankAccount instance at the same time. We have to make the
+BankAccount class threadsafe, and that's our next  challenge. Use the synchronized keyword 
+to make the BankAccount class threadsafe.
