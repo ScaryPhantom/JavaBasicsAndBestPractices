@@ -1,0 +1,7 @@
+This is the main class, the base on you'll work on
+
+public class Main {
+
+    public static void main(String[] args) {
+        final BankAccount account = new BankAccount("12345-678", 1000.00);
+}
