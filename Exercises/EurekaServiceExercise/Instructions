@@ -1,0 +1,7 @@
+Genera un servicio de Eureka que pueda descubrir y administrar los microservicios de:
+
+user-service
+bike-service
+user-service
+
+Estos se encuentran en la carpeta actual como .zip
