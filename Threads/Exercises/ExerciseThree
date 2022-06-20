@@ -1,1 +1,37 @@
+From the below code. We'll create a lock object and use the lock() method in the withdraw() and
+deposit() methods. Two things to keep in mind:
 
+*Both threads need to compete for the same lock, so we create only one lock 
+object that we use in all the methods that have critical sections of code.
+
+*We put the critial section of code within a try/finally block, to ensure 
+that the lock will be released.
+
+Don'r forget to create the lock instance in the BankAccount constructor.
+
+public class BankAccount {
+
+    private double balance;
+    private String accountNumber;
+
+    public BankAccount(String accountNumber, double initialBalance) {
+        this.accountNumber = accountNumber;
+        this.balance = initialBalance;
+    }
+
+    public void deposit(double amount) {
+        balance += amount;
+    }
+
+    public void withdraw(double amount) {
+        balance -= amount;
+    }
+    
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+    
+    public void printAccountNumber(){
+        System.out.println("Account number = "+accountNumber);
+    }
+}
