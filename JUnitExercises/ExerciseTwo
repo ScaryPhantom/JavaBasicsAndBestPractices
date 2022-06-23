@@ -1,0 +1,11 @@
+Create a file for named "TestLogic.java" for "JUnitExerciseTwo.zip" 
+
+In this file:
+
+you'll use JUnit 4, so there is no need to inherit TestCase class. 
+
+The main testing code is written in the testFindMax() method of "Calculation.java". 
+
+Create this test to try it with negative and positive numbers.
+
+And if the testing find some issues with Calculation code, correct them.
