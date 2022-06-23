@@ -1,1 +1,10 @@
+Create the next file: "TestJUnitExcerciseOne.java"
+Test each method by doing the assigned task creating a new object 
+Use assertEquals sentences 
 
+We create the TestRunner.java class to execute the test cases. It contains the main() method in which we run the TestJunitExerciseOne.java 
+class using the runClasses() method of the JUnitCore. In this method, we pass the class file of the TestJunitTestCaseExample.java. 
+The result returned by the runClasses() method will store into the result variable of type Result.
+
+Now, we will run the TestRunner.java class to execute the test cases. 
+We will get the output true when the test cases are passed and false when the test cases are not passed.
