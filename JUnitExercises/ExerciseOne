@@ -8,3 +8,4 @@ The result returned by the runClasses() method will store into the result variab
 
 Now, we will run the TestRunner.java class to execute the test cases. 
 We will get the output true when the test cases are passed and false when the test cases are not passed.
+Get "true" at the output
