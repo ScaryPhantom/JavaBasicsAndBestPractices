@@ -1,5 +1,5 @@
 Create the next file: "TestJUnitExerciseOne.java" at "JUnitExerciseOne.zip"
-Test each method by doing the assigned task creating a new object 
+Test each method by doing the assigned task creating a new object of JUnitExerciseOne type
 Use assertEquals sentences 
 
 We create the TestRunner.java class to execute the test cases. It contains the main() method in which we run the TestJunitExerciseOne.java 
