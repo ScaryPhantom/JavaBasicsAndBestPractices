@@ -1,0 +1,7 @@
+Using JUnit technology, develop a Unit test to test the operation of the SquareEquation class, which contains tools for solving a quadratic equation. 
+The test should be located in the SquareEquationTest class and contain appropriate methods to validate the resulting solution.
+
+Quadratic roots are returned as an instance of the Roots class. 
+Class SquareEquationTest comprises appropriate means solve the quadratic equation.
+
+To check this example download "JUnitSquareEquation.zip"
