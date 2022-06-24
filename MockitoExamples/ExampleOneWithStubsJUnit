@@ -1,0 +1,36 @@
+Here, we are going to use the Mockito framework along with the JUnit framework. 
+We can also use Spring Boot instead of using the JUnit framework.
+
+JUnit is one of the testing frameworks used by the Java programmers for creating test cases. 
+Like Mockito, JUnit is also an open-source testing framework. 
+To deeply understand the concepts of the JUnit framework, click on the given link, https://www.javatpoint.com/junit-tutorial.
+
+In this example, we are going to test a simple module using stubs. Following these steps we achieve to write our "ExampleOneMockito.zip":
+
+Step 1: Add Maven dependencies required by the application. The dependencies are always added in pom.xml file of the application. 
+In this example you need to add the two dependencies:
+
+JUnit dependency
+Mockito dependency
+
+Step 2: Create an interface named ToDoService.java that contains an unimplemented method, as shown below.
+
+Step 3: Create a Java class named ToDoBusiness.java that contains a parameterized constructor and a method.
+
+Step 4: Create a stub class named ToDoServiceStub.java in the source folder of the test (src/test/java), for testing purposes.
+
+Step 5: Create another stub named ToDoBusinessStub.java.
+
+Disadvantages of Stubbing
+
+In the example, the ToDoBusinessStub depends on the ToDoService interface,
+so we have created a stub named ToDoServiceStub that returns dummy values.
+The ToDoServiceStub is nothing, but a real Java class. There are a lot of maintenance problems using stubs. 
+
+For example, if we want to add a new method or delete an existing method to/from the ToDoService interface, we need to keep track on the stub related to this interface.
+Another problem with stubs is the dynamic conditions that makes the code more complicated.
+
+Stubs are useful in simple projects and scenarios, but in complex scenarios, we need something more dynamic than stubs. 
+To overcome the drawbacks, mocks came into play instead of stubs.
+
+
