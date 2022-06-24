@@ -1,0 +1,11 @@
+In this exercise we are going to mock a List.get() method. 
+To use the get() method, we need to pass a value (number) in it.
+
+Step 1: Create a test class named TestList for mocking the List.get() method
+Step 2: create a public void method named testList_get()
+Step 3: Mock a list 
+Step 4: Find a way to get a value from index 0 and return the String "Mockito"
+Step 5: Introduce the properly assert sentence
+Step 6: Print out the result
+
+The output should show that the test is successfully running when the index value of the list is 0, and it returns the given String, i.e., Mockito.
