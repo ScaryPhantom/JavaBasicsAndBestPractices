@@ -1,0 +1,13 @@
+Here, we are going to create an example of mock objects. 
+The following steps where used to create an example of testing using Mockito with JUnit.
+
+Step 1: Create an interface named ToDoService that contains an unimplemented method.
+Step 2: Now, create an implementation class named ToDoBusiness for ToDoService interface.
+Step 3: Create a JUnit test case named ToDoBusinessMock for unit testing.
+
+To run this properly we need to make sure of our dependencies. In this case is needed mockito-core in our pom.xml
+
+The output shows that the test is successfully running. 
+It is also showing that object is available in the list, i.e., "Use Hibernate."
+
+Check this out on "ExampleOneJUnitMockito.zip"
