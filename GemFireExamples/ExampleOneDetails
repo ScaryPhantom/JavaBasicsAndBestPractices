@@ -1,0 +1,11 @@
+Define a Simple Entity
+Apache Geode is an In-Memory Data Grid (IMDG) that maps data to regions. 
+You can configure distributed regions that partition and replicate data across multiple nodes in a cluster. 
+However, in this guide, we use a LOCAL region so that you need not set up anything extra, such as an entire cluster of servers.
+
+Apache Geode is a key/value store, and a region implements the java.util.concurrent.ConcurrentMap interface. 
+Though you can treat a region as a java.util.Map, it is quite a bit more sophisticated than just a simple Java Map, 
+given that data is distributed, replicated, and generally managed inside the region.
+
+In this example, you store Person objects in Apache Geode (a region) by using only a few annotations.
+
