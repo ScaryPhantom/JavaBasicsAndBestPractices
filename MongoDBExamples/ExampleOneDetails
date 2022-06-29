@@ -1,3 +1,5 @@
+For exercises you need yo have an instalation of MongoDB
+
 You will store "Customer" POJOs (Plain Old Java Objects) in a MongoDB database by using Spring Data MongoDB
 
 Navigate to https://start.spring.io. This service pulls in all the dependencies you need for an application and does most of the setup for you.
@@ -24,3 +26,47 @@ The convenient toString() method prints out the details about a customer.
 
 MongoDB stores data in collections. Spring Data MongoDB maps the Customer class into a collection called customer.
 If you want to change the name of the collection, you can use Spring Data MongoDB’s @Document annotation on the class.
+
+Create Simple Queries
+Spring Data MongoDB focuses on storing data in MongoDB.
+It also inherits functionality from the Spring Data Commons project, such as the ability to derive queries.
+Essentially, you need not learn the query language of MongoDB. You can write a handful of methods and the queries are written for you.
+
+To see how this works, check the repository interface that queries Customer documents.
+
+CustomerRepository extends the MongoRepository interface and plugs in the type of values and ID that it works with: 
+
+By default, @EnableMongoRepositories scans the current package for any interfaces that extend one of Spring Data’s repository interfaces. 
+You can use its basePackageClasses=MyRepository.class to safely tell Spring Data MongoDB to scan a different root package by type 
+if your project layout has multiple projects and it does not find your repositories.
+
+Spring Data MongoDB uses the MongoTemplate to execute the queries behind your find* methods. 
+You can use the template yourself for more complex queries, but this guide does not cover that. 
+
+You need to set up some data and use it to generate output. The following listing shows the finished AccessingDataMongodbApplication
+Customer and String, respectively. This interface comes with many operations, including standard CRUD operations (create, read, update, and delete).
+
+You can define other queries by declaring their method signatures. 
+In this case, add findByFirstName, which essentially seeks documents of type Customer and finds the documents that match on firstName.
+
+You also have findByLastName, which finds a list of people by last name.
+
+In a typical Java application, you write a class that implements CustomerRepository and craft the queries yourself.
+What makes Spring Data MongoDB so useful is the fact that you need not create this implementation.
+Spring Data MongoDB creates it on the fly when you run the application.
+
+Now you can wire up this application and see what it looks like!
+
+Create an Application Class
+
+ExampleOneMongodbApplication includes a main() method that autowires an instance of CustomerRepository.
+Spring Data MongoDB dynamically creates a proxy and injects it there. 
+We use the CustomerRepository through a few tests.
+
+First, it saves a handful of Customer objects, demonstrating the save() method and setting up some data to use. 
+Next, it calls findAll() to fetch all Customer objects from the database. 
+Then it calls findByFirstName() to fetch a single Customer by her first name. 
+Finally, it calls findByLastName() to find all customers whose last name is Smith.
+
+By default, Spring Boot tries to connect to a locally hosted instance of MongoDB. 
+Read the reference docs for details on pointing your application to an instance of MongoDB hosted elsewhere.
