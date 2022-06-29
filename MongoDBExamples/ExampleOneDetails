@@ -1,0 +1,26 @@
+You will store "Customer" POJOs (Plain Old Java Objects) in a MongoDB database by using Spring Data MongoDB
+
+Navigate to https://start.spring.io. This service pulls in all the dependencies you need for an application and does most of the setup for you.
+Click Dependencies and select Spring Data MongoDB.
+Click Generate.
+Download the resulting ZIP file, which is an archive of a web application that is configured with your choices.
+
+Define a Simple Entity
+MongoDB is a NoSQL document store.
+In this example, you store Customer objects. 
+
+Check out "ExampleMongoDB.zip"
+
+Here you have a Customer class with three attributes: 
+id, firstName, and lastName. 
+The id is mostly for internal use by MongoDB. 
+You also have a single constructor to populate the entities when creating a new instance.
+
+id fits the standard name for a MongoDB ID, so it does not require any special annotation to tag it for Spring Data MongoDB.
+The other two properties, firstName and lastName, are left unannotated. 
+It is assumed that they are mapped to fields that share the same name as the properties themselves.
+
+The convenient toString() method prints out the details about a customer.
+
+MongoDB stores data in collections. Spring Data MongoDB maps the Customer class into a collection called customer.
+If you want to change the name of the collection, you can use Spring Data MongoDB’s @Document annotation on the class.
