@@ -43,7 +43,7 @@ if your project layout has multiple projects and it does not find your repositor
 Spring Data MongoDB uses the MongoTemplate to execute the queries behind your find* methods. 
 You can use the template yourself for more complex queries, but this guide does not cover that. 
 
-You need to set up some data and use it to generate output. The following listing shows the finished AccessingDataMongodbApplication
+You need to set up some data and use it to generate output. The following listing shows the finished ExampleMongoDBApplication
 Customer and String, respectively. This interface comes with many operations, including standard CRUD operations (create, read, update, and delete).
 
 You can define other queries by declaring their method signatures. 
