@@ -1,0 +1,38 @@
+Create a simple CRUD for next operations:
+
+POST api/schools Save a new school into the database 
+GET api/schools Fetch all the schools 
+PUT api/schools Update the exsiting school 
+DELETE api/schools/:id Delete existing school from the database by its ID
+
+This are the dependencies that you'll need: 
+
+<dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+</dependencies>
+
+You'll need to change your application properties:
+
+#Database connection strings
+spring.data.mongodb.uri=mongodb://localhost/springboot_mongodb_crud
+
+Create a POJO class School having the following attributes: 
+id, name, establishmentYear, availableCourses, and strength and generates its Getters and Setters…
+
+Steps:
+
+Create a SchoolRepository interface which extends MongoRepository.
+
+Declare all the methods in the SchoolService interface to perform the CRUD  operation on the school data.
+
+SchoolServiceImpl is the implementation class of the SchoolService interface.
+
+Create SchoolController class to handle the user request to perform create, read, update, and delete operation and response accordingly.
+
