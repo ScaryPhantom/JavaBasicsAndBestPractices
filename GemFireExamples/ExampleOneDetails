@@ -9,3 +9,99 @@ given that data is distributed, replicated, and generally managed inside the reg
 
 In this example, you store Person objects in Apache Geode (a region) by using only a few annotations.
 
+Check the Person class at the project "accessing-data-gemfire.zip" with two fields: name and age. 
+You also have a single persistent constructor to populate the entities when creating a new instance. 
+The class uses Project Lombok to simplify the implementation.
+
+Notice that this class is annotated with @Region("People"). 
+When Apache Geode stores an instance of this class, a new entry is created inside the People region. 
+This class also marks the name field with @Id. This signifies the identifier used to identify and track the Person data inside Apache Geode. 
+Essentially, the @Id annotated field (such as name) is the key, and the Person instance is the value in the key/value entry. 
+There is no automated key generation in Apache Geode, so you must set the ID (the name) prior to persisting the entity to Apache Geode.
+
+The next important piece is the person’s age. 
+
+The overridden toString() method prints out the person’s name and age.
+
+Spring Data for Apache Geode focuses on storing and accessing data in Apache Geode using Spring.
+It also inherits powerful functionality from the Spring Data Commons project, such as the ability to derive queries. 
+Essentially, you need not learn the query language of Apache Geode (OQL). You can write a handful of methods, and the framework writes the queries for you.
+
+To see how this works, check the interface that queries Person objects stored in Apache Geode PersonRepository.java.
+
+PersonRepository extends the CrudRepository interface from Spring Data Commons and specifies types for the generic type parameters 
+for both the value and the ID (key) with which the Repository works (Person and String, respectively). 
+
+This interface comes with many operations, including basic CRUD (create, read, update, delete) and simple query data access operations (such a findById(..)).
+
+You can define other queries as needed by declaring their method signature. 
+
+In this case, we add findByName, which essentially searches for objects of type Person and finds one that matches on name.
+
+You also have:
+
+    -findByAgeGreaterThan: To find people above a certain age
+    -findByAgeLessThan: To find people below a certain age
+    -findByAgeGreaterThanAndAgeLessThan: To find people in a certain age range
+
+Let’s see what it looks like!
+(Look the Application Class)
+
+In the configuration, was needed to add the @EnableGemfireRepositories annotation.
+By default, @EnableGemfireRepositories scans the current package for any interfaces that extend one of Spring Data’s repository interfaces. 
+
+You can use its basePackageClasses = MyRepository.class to safely tell Spring Data for Apache Geode to scan a different root package 
+by type for application-specific Repository extensions.
+
+A Apache Geode cache containing one or more regions is required to store all the data.
+For that, you use one of Spring Data for Apache Geode’s convenient configuration-based annotations: 
+
+@ClientCacheApplication, @PeerCacheApplication, or @CacheServerApplication.
+
+Apache Geode supports different cache topologies, such as client/server, peer-to-peer (p2p), and even WAN arrangements. 
+In p2p, a peer cache instance is embedded in the application, and your application would have the ability to participate in a cluster as a peer cache member. 
+However, your application is subject to all the constraints of being a peer member in the cluster, so this is not as commonly used as, say, the client/server topology.
+
+In our case, we used @ClientCacheApplication to create a “client” cache instance, which has the ability to connect to and 
+communicate with a cluster of servers. However, to keep things simple, the client stores data locally by using a LOCAL client region, without the need to setup
+or run any servers.
+
+Now, we tagged Person to be stored in a region called People by using the SDG mapping annotation, @Region("People")
+We defined that region by using the ClientRegionFactoryBean<String, Person> bean definition. 
+we needed to inject an instance of the cache, just defined while also naming it People.
+
+A Apache Geode cache instance (whether a peer or client) is just a container for regions, which store your data. 
+You can think of the cache as a schema in an RDBMS and regions as the tables. 
+However, a cache also performs other administrative functions to control and manage all your Regions.
+
+The types are <String, Person>, matching the key type (String) with the value type (Person).
+The public static void main method uses Spring Boot’s SpringApplication.run() to launch the application 
+and invoke the ApplicationRunner (another bean definition) that performs the data access operations on Apache Geode using the application’s Spring Data repository.
+
+The application autowires an instance of PersonRepository that we defined. 
+Spring Data for Apache Geode dynamically creates a concrete class that implements this interface and plugs in the needed query code to meet the interface’s 
+obligations. This repository instance is used by the run() method to demonstrate the functionality.
+
+Store and fetch data
+
+We've created three local Person objects: Alice, Baby Bob, and Teen Carol. 
+Initially, they only exist in memory. 
+
+After creating them, we need to save them to Apache Geode.
+
+Now we can run several queries. 
+The first looks up everyone by name. 
+Then you can run a handful of queries to find adults, babies, and teens, all by using the age attribute. 
+With logging turned on, you can see the queries Spring Data for Apache Geode writes on your behalf.
+
+To see the Apache Geode OQL queries that are generated by SDG, change the @ClientCacheApplication
+annotation logLevel attribute to config. 
+
+Because the query methods (such as findByName) are annotated with SDG’s @Trace annotation, this
+turns on Apache Geode’s OQL query tracing (query-level logging), which shows you the generated OQL, execution time, whether any Apache Geode indexes
+were used by the query to gather the results, and the number of rows returned by the query.
+
+
+
+
+
