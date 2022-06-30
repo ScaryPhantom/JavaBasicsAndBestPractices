@@ -1,0 +1,53 @@
+Let us create a hypothetical grocery shopping list for a user. 
+
+We will do the following operations:
+
+In our Spring application, we define a grocery item Plain Old Java Object (POJO) with ID, name, quantity, and category.
+Next, we perform create, read, update, and delete (CRUD) operations using MongoRepository public interface.
+Finally, we show an alternate approach for updating documents using the MongoTemplate class.
+
+The project were you can watch all the classes and data is "mdb-spring-boot.zip"
+
+Our model here is the POJO or the GroceryItem class.
+Let’s create a package and add the class GroceryItem.java with the following attributes:
+
+        private String id;
+        private String name;
+        private int quantity;
+        private String category;
+
+We use the annotation @Document to set the collection name that will be used by the model. 
+If the collection doesn’t exist, MongoDB will create it.
+
+Specify the MongoDB document’s primary key _id using the @Id annotation. 
+If we don’t specify anything, MongoDB will generate an _id field while creating the document.
+
+(check GroceryItem.java)
+
+The API implementation happens in the repository. It acts as a link between the model and the database, and has all the methods for CRUD operations.
+We first create an ItemRepository public interface which extends the MongoRepository interface.
+
+(check ItemRepository.java)
+
+The first method, findItemByName, requires a parameter for the query, i.e., the field to filter the query by. 
+We specify this with the annotation @Query. The second method uses the category field to get all the items of a particular category. 
+We only want to project the field’s name and quantity in the query response, so we set those fields to 1. 
+We reuse the method count() as it is.
+
+To connect to MongoDB Atlas, we specify the connection string in the application.properties file in the src/main/resources folder.
+The connection string for a cluster can be found in the Atlas UI. There is no need to write connection-related code in any other file.
+Spring Boot takes care of the database connection for us.
+
+(check application.properties file)
+
+We are also specifying the database name here — if it doesn’t exist, MongoDB will create one.
+In this Spring Boot MongoDB example, we are not using the Controller and the View. 
+We will use a CommandLineRunner to view the output on the console.
+
+Our class MdbSpringBootApplication implements the CommandLineRunner interface to run the spring application. 
+ItemRepository is Autowired, allowing Spring to find it automatically. 
+Spring initializes the Application Context using the @SpringBootApplication annotation. 
+
+We also activate the Mongo Repositories using @EnableMongoRepositories. 
+
+Check the rest of the code to understand how to implement CRUD operations and Mongo template
