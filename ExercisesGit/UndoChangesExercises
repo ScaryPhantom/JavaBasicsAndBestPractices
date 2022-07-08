@@ -1,0 +1,45 @@
+Ejercicios de deshacer cambios
+Para hacer estos ejercicios es necesario haber hecho antes los ejercicios sobre historial de cambios o bien hacer un clon del repositorio remoto 
+https://github.com/asalber/libro-git mediante la siguiente secuencia de comandos:
+
+> git clone https://github.com/asalber/libro-git.git
+> cd libro-git
+> git reset --hard 48ed8
+> git remote remove origin
+
+Ejercicio 1
+Eliminar la última línea del fichero indice.txt y guardarlo.
+Comprobar el estado del repositorio.
+Deshacer los cambios realizados en el fichero indice.txt para volver a la versión anterior del fichero.
+Volver a comprobar el estado del repositorio.
+
+Ejercicio 2
+Eliminar la última línea del fichero indice.txt y guardarlo.
+Añadir los cambios a la zona de intercambio temporal.
+Comprobar de nuevo el estado del repositorio.
+Quitar los cambios de la zona de intercambio temporal, pero mantenerlos en el directorio de trabajo.
+Comprobar de nuevo el estado del repositorio.
+Deshacer los cambios realizados en el fichero indice.txt para volver a la versión anterior del fichero.
+Volver a comprobar el estado del repositorio.
+
+Ejercicio 3
+Eliminar la última línea del fichero indice.txt y guardarlo.
+Eliminar el fichero capitulos/capitulo3.txt.
+Añadir un fichero nuevo captitulos/capitulo4.txt vacío.
+Añadir los cambios a la zona de intercambio temporal.
+Comprobar de nuevo el estado del repositorio.
+Quitar los cambios de la zona de intercambio temporal, pero mantenerlos en el directorio de trabajo.
+Comprobar de nuevo el estado del repositorio.
+Deshacer los cambios realizados para volver a la versión del repositorio.
+Volver a comprobar el estado del repositorio.
+
+Ejercicio 4
+Eliminar la última línea del fichero indice.txt y guardarlo.
+Eliminar el fichero capitulos/capitulo3.txt.
+Añadir los cambios a la zona de intercambio temporal y hacer un commit con el mensaje “Borrado accidental.”
+Comprobar el historial del repositorio.
+Deshacer el último commit pero mantener los cambios anteriores en el directorio de trabajo y la zona de intercambio temporal.
+Comprobar el historial y el estado del repositorio.
+Volver a hacer el commit con el mismo mensaje de antes.
+Deshacer el último commit y los cambios anteriores del directorio de trabajo volviendo a la versión anterior del repositorio.
+Comprobar de nuevo el historial y el estado del repositorio.
